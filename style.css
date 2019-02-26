@@ -1,0 +1,11 @@
+.cardos{
+	width:350px;
+	float:left;
+	margin-right:4px;
+	margin-bottom:10px;
+	height:580px;
+}
+.cardos img{
+	width:350px;
+	height:250px;
+}
