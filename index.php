@@ -12,7 +12,7 @@
     <title>Найди по хештегу</title>
   </head>
   <body>
-    <form class = "container" method="POST">
+    <form class = "container" method="GET">
       <br />
       <label id = "tag">Введите слово без пробелов</label>
        <input type="text" name = "tag" class="form-control" placeholder="Введите хэш-тег без решетки">
@@ -29,15 +29,15 @@
 </html>
 
 <?php
-if(isset($_POST['search']))
+if(isset($_GET['search']))
 {
 require __DIR__ . '/vendor/autoload.php';
 $instagram = new \InstagramScraper\Instagram();
 // Let's look at $media
-$tag = $_POST['tag'];
+$tag = $_GET['tag'];
 $tag = str_replace(' ','',$tag);
 $tag = str_replace('#','',$tag);
-$medias = $instagram->getCurrentTopMediasByTagName($tag);
+$medias = $instagram->getMediasByTag($tag,20);
 
 for($i = 0; $i < count($medias); $i++)
 {
@@ -56,5 +56,6 @@ echo '
   </div>
 ';
 }
+
 }
 ?>
